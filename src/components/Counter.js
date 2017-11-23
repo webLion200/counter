@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class Counter extends Component {
     render() {
-        const {value, onIncrement, onDecrement, onOncrementAsync} = this.props
+        const {value, onIncrement, onDecrement, onIncrementAsync} = this.props
         return (
             <p>
                 Clicked: {value} times
@@ -16,7 +16,7 @@ class Counter extends Component {
                     -
                 </button>
                 {' '}
-                <button onClick={onOncrementAsync}>
+                <button onClick={onIncrementAsync}>
                     Increment async
                 </button>
             </p>

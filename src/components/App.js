@@ -3,13 +3,13 @@ import Counter from './Counter'
 
 export default class App extends Component {
     render() {
-        const {store, value,onIncrement, onDecrement, onOncrementAsync} = this.props;
+        const {store, value,onIncrement, onDecrement, onIncrementAsync} = this.props;
         return (
             <Counter
                 value = {value}
-                onIncrement = {onIncrement}
-                onDecrement = {onDecrement}
-                onOncrementAsync = {() => store.dispatch(onOncrementAsync())}
+                onIncrement = {() => store.dispatch(onIncrement())}
+                onDecrement = {() => store.dispatch(onDecrement())}
+                onIncrementAsync = {() => store.dispatch(onIncrementAsync())}
             />
         )
     }

@@ -8,12 +8,19 @@ export default (state = 0, action) => {
             return state
     }
 }
+export function increment() {
+    return { type: 'INCREMENT' }
+}
+
+export function decrement() {
+    return { type: 'DECREMENT' }
+}
 
 export const incrementAsync = () => (
     dispatch => (
         setTimeout(() => {
             dispatch({type: "INCREMENT"})
-        }, 2000)
+        }, 1000)
     )
 );
 

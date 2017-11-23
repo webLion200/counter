@@ -3,20 +3,21 @@ import ReactDOM from 'react-dom'
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import App from './components/App'
-import counter, { incrementAsync } from './reducers'
+import counter, { increment, decrement, incrementAsync } from './reducers'
 
 const store = createStore(counter, applyMiddleware(thunk));
 
-const render = () => ReactDOM.render(
-    <App
-        store={store}
-        value={store.getState()}
-        onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-        onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-        onOncrementAsync={incrementAsync}
-    />,
-    document.getElementById('root')
-)
+const render = () => {
+    ReactDOM.render(
+        <App store={store}
+             value={store.getState()}
+             onIncrement={increment}
+             onDecrement={decrement}
+             onIncrementAsync={incrementAsync}
+        />,
+        document.getElementById('root')
+    );
+};
+render();
 
-render()
-store.subscribe(render)
+store.subscribe(render);
