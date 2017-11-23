@@ -1,16 +1,28 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import Counter from './Counter'
+import {increment, decrement, incrementAsync} from '../reducers'
 
-export default class App extends Component {
+class App extends Component {
     render() {
-        const {store, value,onIncrement, onDecrement, onOncrementAsync} = this.props;
         return (
             <Counter
-                value = {value}
-                onIncrement = {onIncrement}
-                onDecrement = {onDecrement}
-                onOncrementAsync = {() => store.dispatch(onOncrementAsync())}
+                value = {this.props.number}
+                onIncrement = {this.props.increment}
+                onDecrement = {this.props.decrement}
+                onOncrementAsync = {this.props.incrementAsync}
             />
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    number : state
+});
+
+const actionCreator = {increment, decrement, incrementAsync};       //  mapPropsToStatus
+
+export default connect(
+    mapStateToProps,
+    actionCreator
+)(App);

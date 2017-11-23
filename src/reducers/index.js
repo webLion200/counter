@@ -9,6 +9,14 @@ export default (state = 0, action) => {
     }
 }
 
+export function increment() {
+    return { type: 'INCREMENT' }
+}
+
+export function decrement() {
+    return { type: 'DECREMENT' }
+}
+
 export const incrementAsync = () => (
     dispatch => (
         setTimeout(() => {
